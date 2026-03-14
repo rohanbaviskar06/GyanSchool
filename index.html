@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyanschool | Professional Education & Learning</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Gyanschool provides professional courses to elevate your career. Enroll now and gain access to high-quality learning resources.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> Gyanschool
+            </a>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero section bg-light">
+            <div class="container">
+                <div class="hero-split">
+                    <!-- Mobile Top Badge -->
+                    <div class="mobile-only-badge">
+                        <span class="badge">#1 Platform for Learning</span>
+                    </div>
+
+                    <!-- Left Content -->
+                    <div class="hero-text reveal">
+                        <span class="badge desktop-only-badge">#1 Platform for Learning</span>
+                        <h1>Unlock Your Potential with <span class="highlight">Gyanschool</span></h1>
+                        <p>Discover industry-leading courses designed by experts. Master new skills, build real-world
+                            projects, and achieve your professional goals with our comprehensive learning platform.</p>
+                        <div class="hero-buttons">
+                            <a href="#courses" class="btn btn-primary">Get Started <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Right Image -->
+                    <div class="hero-image reveal reveal-delay-2">
+                        <img class="desktop-only-img" src="images/educavo_hero_illustration_1773475214319.png"
+                            alt="Gyanschool Learning Illustration Desktop">
+                        <img class="mobile-only-img" src="images/hero_mobile_illustration.png"
+                            alt="Gyanschool Learning Illustration Mobile">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section bg-light">
+            <div class="container">
+                <div class="section-title text-center reveal">
+                    <h2>Why Choose <span class="highlight">Gyanschool?</span></h2>
+                    <p>We provide a transformative learning experience that bridges the gap between ambition and
+                        success.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card reveal reveal-delay-1">
+                        <div class="feature-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3>Practical Learning</h3>
+                        <p>Focus on real-world projects and hands-on coding to build a portfolio that stands out to
+                            employers.</p>
+                    </div>
+                    <div class="feature-card reveal reveal-delay-2">
+                        <div class="feature-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h3>Expert Mentorship</h3>
+                        <p>Learn directly from industry professionals who bring years of experience and insights to the
+                            classroom.</p>
+                    </div>
+                    <div class="feature-card reveal reveal-delay-3">
+                        <div class="feature-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <h3>Recognized Certification</h3>
+                        <p>Earn industry-recognized certificates upon completion to validate your skills and boost your
+                            resume.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="courses section">
+            <div class="container">
+                <div class="section-title text-center reveal">
+                    <h2>Our Popular <span class="highlight">Courses</span></h2>
+                    <p>Unlock new opportunities with our top-rated programs.</p>
+                </div>
+                <!-- Course cards rendered dynamically by js/courses.js —
+                     To add a new course, just add an entry to the `courses` array in that file! -->
+                <div class="courses-grid" id="courses-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="#" class="logo footer-logo">
+                        <i class="fa-solid fa-graduation-cap"></i> Gyanschool
+                    </a>
+                    <p>Empowering the next generation of tech leaders with cutting-edge skills and practical knowledge.
+                        Your journey to excellence starts here.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-gram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#courses">Our Courses</a></li>
+                        <li><a href="#">Instructors</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-location-dot"></i> 123 Education Lane, Tech City, IN 400001</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fa-solid fa-envelope"></i> hello@gyanschool.edu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gyanschool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/courses.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
