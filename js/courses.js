@@ -51,7 +51,8 @@ const courses = [
         students: "8k+",
         description: "Learn design thinking, wireframing, prototyping, and modern UI aesthetics using Figma and industry-standard tools.",
         enrollUrl: "#"
-    }
+    },
+
     // ---- ADD NEW COURSES BELOW THIS LINE ----
     // {
     //     title: "Your New Course Title",
