@@ -25,8 +25,6 @@ const courses = [
         image: "images/course_webdev_1773472270126.png",
         rating: 4.5,
         ratingText: "(4.8)",
-        lessons: 24,
-        students: "5k+",
         description: "Master frontend and backend technologies including HTML, CSS, JavaScript, React, and Node.js. Build scalable web applications.",
         enrollUrl: "#"
     },
@@ -52,6 +50,7 @@ const courses = [
         description: "Learn design thinking, wireframing, prototyping, and modern UI aesthetics using Figma and industry-standard tools.",
         enrollUrl: "#"
     },
+
 
     // ---- ADD NEW COURSES BELOW THIS LINE ----
     // {

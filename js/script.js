@@ -70,10 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.testimonial-card');
 
     if (slider && cards.length > 0) {
+        let autoSlideInterval;
         
+        const getCardWidth = () => cards[0].offsetWidth + 32; // card + gap
+
         const updateSlider = () => {
-            const cardWidthWithGap = cards[0].offsetWidth + 32; 
-            const visibleCards = Math.round(slider.offsetWidth / cardWidthWithGap) || 1;
+            const cardWidth = getCardWidth();
+            const visibleCards = Math.round(slider.offsetWidth / cardWidth) || 1;
             const totalPages = Math.ceil(cards.length / visibleCards);
             
             dotContainer.innerHTML = '';
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i === 0) dot.classList.add('active');
                 dot.addEventListener('click', () => {
                     slider.scrollTo({ 
-                        left: i * visibleCards * cardWidthWithGap, 
+                        left: i * visibleCards * cardWidth, 
                         behavior: 'smooth' 
                     });
                 });
@@ -91,12 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        const startAutoSlide = () => {
+            autoSlideInterval = setInterval(() => {
+                const cardWidth = getCardWidth();
+                const maxScroll = slider.scrollWidth - slider.offsetWidth;
+                
+                if (slider.scrollLeft >= maxScroll - 10) {
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            }, 4000);
+        };
+
+        const stopAutoSlide = () => clearInterval(autoSlideInterval);
+
         updateSlider();
+        startAutoSlide();
 
         slider.addEventListener('scroll', () => {
-            const cardWidthWithGap = cards[0].offsetWidth + 32;
-            const visibleCards = Math.round(slider.offsetWidth / cardWidthWithGap) || 1;
-            const activePage = Math.round(slider.scrollLeft / (visibleCards * cardWidthWithGap));
+            const cardWidth = getCardWidth();
+            const visibleCards = Math.round(slider.offsetWidth / cardWidth) || 1;
+            const activePage = Math.round(slider.scrollLeft / (visibleCards * cardWidth));
             
             const dots = dotContainer.querySelectorAll('.dot');
             dots.forEach((dot, i) => {
@@ -104,17 +123,66 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { passive: true });
 
-        // Button Controls
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        // Button Controls (Slide one by one)
         nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+            const cardWidth = getCardWidth();
+            if (slider.scrollLeft >= slider.scrollWidth - slider.offsetWidth - 10) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+            stopAutoSlide();
+            startAutoSlide();
         });
 
         prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -slider.offsetWidth, behavior: 'smooth' });
+            const cardWidth = getCardWidth();
+            if (slider.scrollLeft <= 10) {
+                slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            }
+            stopAutoSlide();
+            startAutoSlide();
         });
 
         window.addEventListener('resize', updateSlider);
     }
+
+    // ScrollSpy: Update active nav-links as you scroll
+    const sections = document.querySelectorAll('main > section[id]');
+    const navItems = document.querySelectorAll('.nav-links a:not(.btn)');
+
+    const scrollSpyOptions = {
+        threshold: 0.3, 
+        rootMargin: "0px 0px -40% 0px" // Trigger when section is in top half
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(sec => scrollSpyObserver.observe(sec));
+
+    // Special case for top of page (Home)
+    window.addEventListener('scroll', () => {
+        if (window.scrollY < 100) {
+            navItems.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#hero');
+            });
+        }
+    }, { passive: true });
 
     // AI Orbital Rotation logic removed as per request.
 });
