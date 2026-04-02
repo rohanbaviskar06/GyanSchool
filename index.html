@@ -401,33 +401,37 @@
                                 <h3>Register &amp; Get Started</h3>
                                 <p>Join thousands of learners today — it's free to sign up!</p>
                             </div>
-                            <form class="register-form" id="register-form" onsubmit="handleRegister(event)">
+                            <form class="register-form" id="register-form" action="https://api.web3forms.com/submit" method="POST">
+                                <input type="hidden" name="access_key" value="75ab68d3-8edd-4c08-890f-19f19cacb772">
+                                <input type="hidden" name="from_name" value="GyanSchool Contact Form">
+                                <input type="hidden" name="subject" value="New Enrollment Request">
+                                
                                 <div class="form-group">
                                     <label for="reg-name">Full Name</label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-user"></i>
-                                        <input type="text" id="reg-name" placeholder="e.g. Your Name" required>
+                                        <input type="text" name="name" id="reg-name" placeholder="e.g. Your Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="reg-email">Email Address</label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-envelope"></i>
-                                        <input type="email" id="reg-email" placeholder="you@example.com" required>
+                                        <input type="email" name="email" id="reg-email" placeholder="you@example.com" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="reg-phone">Phone Number</label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-phone"></i>
-                                        <input type="tel" id="reg-phone" placeholder="+91 1122334455">
+                                        <input type="tel" name="phone" id="reg-phone" placeholder="+91 1122334455">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="reg-course">Interested Course</label>
                                     <div class="input-wrap select-wrap">
                                         <i class="fa-solid fa-book-open"></i>
-                                        <select id="reg-course" required>
+                                        <select name="course" id="reg-course" required>
                                             <option value="" disabled selected>Select a course…</option>
                                             <option>Web Development Bootcamp</option>
                                             <option>Data Science &amp; ML</option>

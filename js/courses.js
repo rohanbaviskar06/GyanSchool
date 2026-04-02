@@ -26,7 +26,7 @@ const courses = [
         rating: 4.5,
         ratingText: "(4.8)",
         description: "Master frontend and backend technologies including HTML, CSS, JavaScript, React, and Node.js. Build scalable web applications.",
-        enrollUrl: "#"
+        enrollUrl: "https://lms.capoasis.com/catalog"
     },
     {
         title: "Data Science & Applied AI",
@@ -37,7 +37,7 @@ const courses = [
         lessons: 32,
         students: "3k+",
         description: "Dive deep into Python, Machine Learning, Data Visualization, and Neural Networks. Become a highly sought-after data professional.",
-        enrollUrl: "#"
+        enrollUrl: "https://lms.capoasis.com/catalog"
     },
     {
         title: "UI/UX Design Masterclass",
@@ -48,7 +48,7 @@ const courses = [
         lessons: 18,
         students: "8k+",
         description: "Learn design thinking, wireframing, prototyping, and modern UI aesthetics using Figma and industry-standard tools.",
-        enrollUrl: "#"
+        enrollUrl: "https://lms.capoasis.com/catalog"
     },
 
 
