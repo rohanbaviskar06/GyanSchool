@@ -185,14 +185,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // AI Orbital Rotation logic removed as per request.
+
+    // Register Form AJAX Submission
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form elements
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+
+            const formData = new FormData(registerForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    // Success
+                    const name = document.getElementById('reg-name').value.trim();
+                    const course = document.getElementById('reg-course').value;
+                    alert(`🎉 Thank you, ${name}! You've been successfully registered for "${course}". Our team will contact you shortly.`);
+                    registerForm.reset();
+                } else {
+                    // Error from API
+                    console.log(response);
+                    alert("⚠️ " + (jsonResponse.message || "Something went wrong. Please try again."));
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert("⚠️ Error submitting form. Please check your internet connection.");
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        });
+    }
 });
 
-// Register Form Handler
-function handleRegister(e) {
-    e.preventDefault();
-    const name = document.getElementById('reg-name').value.trim();
-    const course = document.getElementById('reg-course').value;
-    alert(`🎉 Thank you, ${name}! You've been registered for "${course}". We'll be in touch soon!`);
-    e.target.reset();
-}
+
 
